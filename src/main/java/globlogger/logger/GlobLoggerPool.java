@@ -11,25 +11,22 @@ public abstract class GlobLoggerPool {
 	private final static HashMap<String, GlobLogger> hash = new HashMap<>();
 	private final static Object lock = new Object();
 
-	public static void removeLogger(String id) {
-		synchronized (lock) {
-			if (id != null)
-				hash.remove(id);
-		}
+	public synchronized static void removeLogger(String id) {
+		if (id != null)
+			hash.remove(id);
+		
 	}
 
-	public static GlobLogger getLogger(String id) {
-		synchronized (lock) {
-			if (!hash.containsKey(id))
-				hash.put(id, new GlobLogger());
-			return hash.get(id);
-		}
+	public synchronized static GlobLogger getLogger(String id) {
+
+		if (!hash.containsKey(id))
+			hash.put(id, new GlobLogger());
+		return hash.get(id);
+
 	}
 
-	public static void clean() {
-		synchronized (lock) {
-			hash.clear();
-		}
+	public synchronized static void clean() {
+		hash.clear();
 	}
 
 }
