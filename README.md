@@ -3,7 +3,7 @@ Logger for send Logs to email,database(couchbase for now),and http post
 
 Download jar: <a href="http://globnet.co.il/kfirfer/BugSystemReport-0.1.jar">BugSystemReport.01</a>
 
-Full user guide: "src/main/java/example.Main.java"
+Full user guide: "src/main/java/globlogger/example.Main.java"
 ## Simple example of sending log to email
 	EmailLogger email = new EmailLogger("kfirfer@gmail.com", "password");
 	email.sendTo("yukuzuna@live.com");
